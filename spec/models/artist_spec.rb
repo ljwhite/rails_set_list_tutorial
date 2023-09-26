@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Artist, type: :model do
-  it {should have_many :songs}
+
+  describe 'relationships' do
+    it {should have_many :songs}
+  end
+
 
   describe 'instance methods' do 
     before :each do 
