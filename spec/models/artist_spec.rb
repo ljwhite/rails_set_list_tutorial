@@ -6,6 +6,9 @@ RSpec.describe Artist, type: :model do
     it {should have_many :songs}
   end
 
+  describe 'validations' do
+    it {should validate_presence_of :name}
+  end
 
   describe 'instance methods' do 
     before :each do 
@@ -15,7 +18,7 @@ RSpec.describe Artist, type: :model do
       @song_3 = @prince.songs.create!(title: 'Song 3', length: 2, play_count: 1)
     end
 
-    it 'has a method to find the average length of all artist songs' do
+    it '.average_song_length' do
       expect(@prince.average_song_length).to eq 18.67
     end
   end
