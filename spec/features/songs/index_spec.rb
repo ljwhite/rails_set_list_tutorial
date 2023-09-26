@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'songs index page' do
+RSpec.describe 'songs index page', type: :feature do
   before(:each) do
     @prince = Artist.create!(name: 'Prince')
     @purple = @prince.songs.create!(title: 'Purple Rain', length: 15, play_count: 20)
@@ -12,6 +12,7 @@ RSpec.describe 'songs index page' do
   it 'lists all songs' do
     visit "/songs/"
     expect(page).to have_content(@purple.title)
+    expect(page).to have_content("Play Count: #{@purple.play_count}")
     expect(page).to have_content(@beret.title)
     expect(page).to have_content(@callme.title)
   end
